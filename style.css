@@ -100,24 +100,45 @@ body{
 
 }
 
-.tasks__list{
-    list-style: circle;
+.task-type{
+    list-style-type: circle;
+    display: inline-flex;
+    padding: 8px;
+    background-color: black;
+    border-radius: 50px;
     
 }
 
 
 .task-info__container{
+    display: flex;
     background-color: #e2e2e2;
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 400;
     padding: 2% 1%;
     width: 95%;
     border-radius: 5px;
     margin-top: 2%;
+    gap: 2%;
     
 }   
 
+.task__button--remove-task{
+    background-image: url("./assets/trash-icon.svg");
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    
+        
+}
 
+.task__item{
+   display: flex;
+   align-items: center;
+
+}
 
 
    
