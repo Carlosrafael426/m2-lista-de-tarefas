@@ -101,7 +101,6 @@ body{
 }
 
 .task-type{
-    list-style-type: circle;
     display: inline-flex;
     padding: 8px;
     background-color: black;
@@ -131,6 +130,7 @@ body{
     background-repeat: no-repeat;
     border: none;
     
+    
         
 }
 
@@ -140,6 +140,16 @@ body{
 
 }
 
+.span-urgent{
+    background-color: #e40404;
+}
 
+.span-important{
+    background-color: #f3a703;
+}
+
+.span-normal{
+    background-color: #028302;
+}
    
 

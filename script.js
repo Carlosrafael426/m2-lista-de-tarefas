@@ -11,6 +11,7 @@ const tasks = [
   {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
 
+
 const list = document.querySelector("ul");
 
 function  renderElements(array) {
@@ -54,4 +55,9 @@ function  createTaskItem(title ,type){
     console.log(listItem);
   }  
 
-renderElements(tasks)
+  function addTasklist(){
+    const form = document.querySelector("form__container");
+    console.log(form)
+  }
+  
+  addTasklist
