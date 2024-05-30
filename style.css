@@ -137,6 +137,7 @@ body{
 .task__item{
    display: flex;
    align-items: center;
+   background-position: 25% 75%;
 
 }
 

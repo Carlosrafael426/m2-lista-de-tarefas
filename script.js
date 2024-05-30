@@ -16,11 +16,9 @@ const list = document.querySelector("ul");
 
 function  renderElements(array) {
   for(let i = 0; i < array.length; i++){
-    const title = array[i].title;
-    const type = array[i].type;
-    createTaskItem(title, type);
-    
-
+      const title = array[i].title;
+      const type = array[i].type;
+      createTaskItem(title, type); 
   }
 }
 
@@ -31,8 +29,18 @@ function  createTaskItem(title ,type){
     const listSpan = document.createElement("span");
     const listTitle = document.createElement("p");
     const listButton = document.createElement("button");
+    
 
     listTitle.innerText  = title; 
+    // listButton.innerText = ".";
+// 
+    // const deleteTask = document.querySelector(".task__button--remove-task");
+    // deleteTask.addEventListener("submit", function(e){
+      // e.preventDefault();
+      // const searchTask = tasks.indexOf(e);
+      // console.log(deleteTask);
+// 
+    // } )
 
     if(type === "Urgente"){
        listSpan.classList.add("span-urgent");
@@ -52,12 +60,17 @@ function  createTaskItem(title ,type){
     listContainer.appendChild(listSpan);
     listContainer.appendChild(listTitle);
     list.appendChild(listItem);  
-    console.log(listItem);
   }  
+  // renderElements(tasks)
 
-  function addTasklist(){
-    const form = document.querySelector("form__container");
-    console.log(form)
-  }
-  
-  addTasklist
+  const form = document.querySelector('.form__container')
+
+  form.addEventListener("submit", function(event){
+    event.preventDefault();
+    const inputName = document.querySelector(".form__input--text");
+    const selectPriority = document.querySelector(".form__input--priority");
+    tasks.unshift({title: inputName.value ,type: selectPriority.value});
+    renderElements(tasks);
+
+    
+  })
