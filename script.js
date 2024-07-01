@@ -12,7 +12,11 @@ const tasks = [
 ];
 
 
-const list = document.querySelector("ul");
+const list = document.querySelector(".tasks__list");
+
+while (list.firstChild) {
+  list.removeChild(list.firstChild);
+}
 
 function  renderElements(array) {
   for(let i = 0; i < array.length; i++){
@@ -22,25 +26,25 @@ function  renderElements(array) {
   }
 }
 
-function  createTaskItem(title ,type){
+function  createTaskItem(title, type){
 
     const listItem = document.createElement("li");
     const listContainer = document.createElement("div");
     const listSpan = document.createElement("span");
     const listTitle = document.createElement("p");
-    const listButton = document.createElement("button");
-    
+    const deleteButton = document.createElement("button");
+  
+    deleteButton.addEventListener("click", function(e){
+      console.log(e);
+      const deleteTask = tasks.indexOf(e);
+      console.log(deleteTask);
+      tasks.splice(deleteTask,1);
+      renderElements(tasks);
+      //console.log(tasks);
 
-    listTitle.innerText  = title; 
-    // listButton.innerText = ".";
-// 
-    // const deleteTask = document.querySelector(".task__button--remove-task");
-    // deleteTask.addEventListener("submit", function(e){
-      // e.preventDefault();
-      // const searchTask = tasks.indexOf(e);
-      // console.log(deleteTask);
-// 
-    // } )
+    }) 
+    
+    listTitle.innerText  = title;
 
     if(type === "Urgente"){
        listSpan.classList.add("span-urgent");
@@ -53,10 +57,10 @@ function  createTaskItem(title ,type){
     listItem.classList.add("task__item");
     listContainer.classList.add("task-info__container");
     listSpan.classList.add("task-type");
-    listButton.classList.add("task__button--remove-task");
+    deleteButton.classList.add("task__button--remove-task");
 
     listItem.appendChild(listContainer);
-    listItem.appendChild(listButton);
+    listItem.appendChild(deleteButton);
     listContainer.appendChild(listSpan);
     listContainer.appendChild(listTitle);
     list.appendChild(listItem);  
@@ -71,6 +75,5 @@ function  createTaskItem(title ,type){
     const selectPriority = document.querySelector(".form__input--priority");
     tasks.unshift({title: inputName.value ,type: selectPriority.value});
     renderElements(tasks);
-
-    
+    console.log(tasks);
   })

@@ -75,6 +75,10 @@ body{
     width: 100%;
 }
 
+.form__input--priority:hover{
+    cursor: pointer    
+}
+
 .form__input--priority{
     padding: 2% 02%;
     width: 70%;
@@ -91,6 +95,10 @@ body{
     outline: 0;
     font-size: 15px;
     width: 100%;
+}
+
+.form__button--add-task:hover{
+    cursor: pointer;
 }
 .tasks__container{
     background-color: white;
@@ -128,11 +136,12 @@ body{
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;
-    border: none;
-    
-    
-        
+    border: none;     
 }
+.task__button--remove-task:hover{
+    cursor: pointer;
+}
+
 
 .task__item{
    display: flex;
