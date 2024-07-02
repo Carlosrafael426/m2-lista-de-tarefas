@@ -12,21 +12,18 @@ const tasks = [
 ];
 
 
-const list = document.querySelector(".tasks__list");
-
-while (list.firstChild) {
-  list.removeChild(list.firstChild);
-}
 
 function  renderElements(array) {
+  const list = document.querySelector(".tasks__list");
+  list.innerHTML = " "
   for(let i = 0; i < array.length; i++){
-      const title = array[i].title;
-      const type = array[i].type;
-      createTaskItem(title, type); 
+      const item = createTaskItem(array[i]) 
+      list.appendChild(item);  
   }
 }
+renderElements(tasks)
 
-function  createTaskItem(title, type){
+function  createTaskItem(item){
 
     const listItem = document.createElement("li");
     const listContainer = document.createElement("div");
@@ -34,21 +31,18 @@ function  createTaskItem(title, type){
     const listTitle = document.createElement("p");
     const deleteButton = document.createElement("button");
   
-    deleteButton.addEventListener("click", function(e){
-      console.log(e);
-      const deleteTask = tasks.indexOf(e);
-      console.log(deleteTask);
+    deleteButton.addEventListener("click", function(){
+      const deleteTask = tasks.indexOf(item);
       tasks.splice(deleteTask,1);
       renderElements(tasks);
-      //console.log(tasks);
-
     }) 
     
-    listTitle.innerText  = title;
+    listTitle.innerText  = item.title;
+    console.log(listTitle);
 
-    if(type === "Urgente"){
+    if(item.type === "Urgente"){
        listSpan.classList.add("span-urgent");
-    }else if(type === "Importante"){
+    }else if(item.type === "Importante"){
        listSpan.classList.add("span-important");
     }else{
        listSpan.classList.add("span-normal");
@@ -63,10 +57,8 @@ function  createTaskItem(title, type){
     listItem.appendChild(deleteButton);
     listContainer.appendChild(listSpan);
     listContainer.appendChild(listTitle);
-    list.appendChild(listItem);  
-  }  
-  // renderElements(tasks)
-
+    return listItem;  
+  }
   const form = document.querySelector('.form__container')
 
   form.addEventListener("submit", function(event){
@@ -75,5 +67,4 @@ function  createTaskItem(title, type){
     const selectPriority = document.querySelector(".form__input--priority");
     tasks.unshift({title: inputName.value ,type: selectPriority.value});
     renderElements(tasks);
-    console.log(tasks);
   })
