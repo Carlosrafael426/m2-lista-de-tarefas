@@ -38,11 +38,11 @@ function  createTaskItem(item){
     }) 
     
     listTitle.innerText  = item.title;
-    console.log(listTitle);
+    console.log(item.type);
 
-    if(item.type === "Urgente"){
+    if(item.type == "Urgente"){
        listSpan.classList.add("span-urgent");
-    }else if(item.type === "Importante"){
+    }else if(item.type == "Importante"){
        listSpan.classList.add("span-important");
     }else{
        listSpan.classList.add("span-normal");
